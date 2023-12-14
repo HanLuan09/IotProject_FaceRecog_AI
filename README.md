@@ -1,6 +1,6 @@
 # FaceRecog
-Nhận diện khuôn mặt khá chuẩn xác bằng MTCNN và Facenet!
-Chạy trên Tensorflow 2.x
+- Nhận diện khuôn mặt khá chuẩn xác bằng MTCNN và Facenet!
+- Chạy trên Tensorflow 2.x
 
 ### 1. Khái niệm
 - MTCNN là viết tắt của Multi-task Cascaded Convolutional Networks. Nó là bao gồm 3 mạng CNN xếp chồng và đồng thời hoạt động khi detect khuôn mặt. Mỗi mạng có cấu trúc khác nhau và đảm nhiệm vai trò khác nhau trong task. Đầu ra của MTCNN là vị trí khuôn mặt và các điểm trên mặt như: mắt, mũi, miệng…
@@ -9,19 +9,27 @@ Chạy trên Tensorflow 2.x
 
 ### 2. Chuẩn bị dữ liệu
 
-##### 2.1 Chuẩn bị ảnh khuôn mặt để train
+##### 2.1 import các thư viện cần thiết
+
+- Chạy lệnh sau ở thư mục gốc: 
+`
+pip install -r requirements.txt
+`
+
+##### 2.2 Chuẩn bị ảnh khuôn mặt để train
 
 - Bây giờ các bạn sưu tầm ảnh của 2 người trở lên, mỗi người khoảng 10 tấm hình rõ mặt. Ví dụ 2 người tên là NguyenVanA và LeThiB nhé. Các bạn tạo 02 thư mục NguyenVanA và LeThiB trong thư mục raw và copy ảnh của 2 người vào riêng 2 thư mục đó, ảnh của ai vào thư mục của người đó.
 
-##### 2.2 Tiền xử lý dữ liệu để cắt khuôn mặt từ ảnh gốc
+##### 2.3 Tiền xử lý dữ liệu để cắt khuôn mặt từ ảnh gốc
 
 - Với chỗ ảnh mà bạn đã sưu tầm bên trên, có thể là ảnh cả người, bây giờ chúng ta sẽ cắt riêng khuôn mặt ra để train
 - Chạy lệnh sau ở thư mục gốc:
 `
 python src/align_dataset_mtcnn.py  Dataset/FaceData/raw Dataset/FaceData/processed --image_size 160 --margin 32  --random_order --gpu_memory_fraction 0.25
 `
+- Chạy xong thấy nó hiển thị dạng “Total number of images: …” là thành công. Có thêm thư mục processed có cấu trúc tương tự thư mục raw nhưng chỉ chứa dữ liệu khuôn mặt dã được xử lý
 
-##### 2.3 Tải dữ liệu pretrain của Facenet về máy:
+##### 2.4 Tải dữ liệu pretrain của Facenet về máy:
 
 - Tải weights pretrain [Tại đây](https://drive.google.com/file/d/1EXPBSXwTaqrSC0OhUdXNmKSh9qJUQ55-/view)
 
