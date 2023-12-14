@@ -34,5 +34,3 @@ python src/align_dataset_mtcnn.py  Dataset/FaceData/raw Dataset/FaceData/process
 `
 python src/classifier.py TRAIN Dataset/FaceData/processed Models/20180402-114759.pb Models/facemodel.pkl --batch_size 1000
 `
--Khi nào màn hình hiện lên chữ “Saved classifier model to file “Models/facemodel.pkl” là done!
-
